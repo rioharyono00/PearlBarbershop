@@ -401,7 +401,7 @@
       ">Keep It Handsome</p>
 
       <div class="hero-cta" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-        <button class="btn-primary" onclick="window.open('https://wa.me/6281238012282','_blank')">
+        <button class="btn-primary" onclick="openBookModal()">
           Book Appointment
         </button>
         <button class="btn-outline" onclick="scrollToSection('services')">
@@ -808,6 +808,73 @@
     <p style="font-family:'Outfit',sans-serif;font-size:11px;color:#2a2a2a;">&copy; 2026 Pearl Barber Shop. All rights reserved.</p>
   </footer>
 
+  <!-- BOOK MODAL -->
+  <div id="bookModal" style="
+    display:none;position:fixed;inset:0;z-index:9998;
+    background:rgba(0,0,0,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    align-items:center;justify-content:center;
+  " onclick="closeBookModal(event)">
+    <div style="position:relative;width:min(480px,90vw);padding:48px 40px;
+      background:linear-gradient(145deg,#111,#0d0d0d);
+      border:1px solid #1e1e1e;" onclick="event.stopPropagation()">
+
+      <!-- garis emas atas -->
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#c9a96e,transparent);"></div>
+
+      <!-- tutup -->
+      <button onclick="closeBookModal()" style="
+        position:absolute;top:16px;right:20px;background:none;border:none;
+        color:#444;font-size:18px;cursor:pointer;line-height:1;transition:color 0.3s;
+      " onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='#444'">✕</button>
+
+      <!-- judul -->
+      <div style="text-align:center;margin-bottom:36px;">
+        <span class="float-tag" style="margin-bottom:16px;display:inline-block;">Book Appointment</span>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:#e8e0d4;margin-top:12px;">
+          Pilih Cabang
+        </h3>
+        <p style="font-family:'Outfit',sans-serif;font-size:12px;color:#555;margin-top:8px;">
+          Anda akan diarahkan ke WhatsApp
+        </p>
+      </div>
+
+      <!-- dua pilihan cabang -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+
+        <!-- GN SANGHYANG -->
+        <div onclick="bookBranch('gs')" style="
+          border:1px solid #222;padding:24px 20px;cursor:pointer;
+          transition:all 0.3s;text-align:center;position:relative;overflow:hidden;
+        " onmouseover="this.style.borderColor='#c9a96e';this.style.background='rgba(201,169,110,0.04)'"
+           onmouseout="this.style.borderColor='#222';this.style.background='transparent'">
+          <p style="font-family:'Outfit',sans-serif;font-size:9px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;margin-bottom:12px;">Cabang 1</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;color:#e8e0d4;margin-bottom:8px;">Gunung Sanghyang</p>
+          <p style="font-family:'Outfit',sans-serif;font-size:11px;color:#555;line-height:1.6;margin-bottom:16px;">Kerobokan Kaja, Kuta Utara<br>Kab. Badung, Bali</p>
+          <div style="display:flex;align-items:center;gap:4px;justify-content:center;">
+            <span style="color:#c9a96e;font-size:11px;">★★★★☆</span>
+            <span style="font-family:'Outfit',sans-serif;font-size:10px;color:#555;">4.4</span>
+          </div>
+        </div>
+
+        <!-- GATSU -->
+        <div onclick="bookBranch('gt')" style="
+          border:1px solid #222;padding:24px 20px;cursor:pointer;
+          transition:all 0.3s;text-align:center;position:relative;overflow:hidden;
+        " onmouseover="this.style.borderColor='#c9a96e';this.style.background='rgba(201,169,110,0.04)'"
+           onmouseout="this.style.borderColor='#222';this.style.background='transparent'">
+          <p style="font-family:'Outfit',sans-serif;font-size:9px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;margin-bottom:12px;">Cabang 2</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;color:#e8e0d4;margin-bottom:8px;">Gatsu</p>
+          <p style="font-family:'Outfit',sans-serif;font-size:11px;color:#555;line-height:1.6;margin-bottom:16px;">Dauh Puri Kaja, Denpasar Utara<br>Kota Denpasar, Bali</p>
+          <div style="display:flex;align-items:center;gap:4px;justify-content:center;">
+            <span style="color:#c9a96e;font-size:11px;">★★★★★</span>
+            <span style="font-family:'Outfit',sans-serif;font-size:10px;color:#555;">4.6</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- VIDEO MODAL -->
   <div id="videoModal" style="
     display:none;
@@ -879,6 +946,32 @@
   </div>
 
   <script>
+    // Book modal
+    const bookModal = document.getElementById('bookModal');
+    function openBookModal() {
+      bookModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeBookModal(e) {
+      if (e && e.target !== bookModal) return;
+      bookModal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    function bookBranch(branch) {
+      const msg = branch === 'gs'
+        ? 'Halo, saya ingin booking di cabang Gunung Sanghyang'
+        : 'Halo, saya ingin booking di cabang Gatsu';
+      bookModal.style.display = 'none';
+      document.body.style.overflow = '';
+      window.open('https://wa.me/6281238012282?text=' + encodeURIComponent(msg), '_blank');
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && bookModal.style.display === 'flex') {
+        bookModal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    });
+
     // Branch tab switcher
     function switchBranch(branch) {
       const isGS = branch === 'gs';
