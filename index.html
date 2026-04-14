@@ -323,11 +323,10 @@
 
       <div class="desktop-nav">
         <span class="nav-link active" data-section="home" onclick="scrollTo('home')">Beranda</span>
+        <span class="nav-link" data-section="cabang" onclick="scrollTo('cabang')">Cabang</span>
         <span class="nav-link" data-section="services" onclick="scrollTo('services')">Layanan</span>
         <span class="nav-link" data-section="gallery" onclick="scrollTo('gallery')">Galeri</span>
         <span class="nav-link" data-section="reviews" onclick="scrollTo('reviews')">Ulasan</span>
-        <span class="nav-link" data-section="cabang" onclick="scrollTo('cabang')">Cabang</span>
-        <span class="nav-link" data-section="contact" onclick="scrollTo('contact')">Kontak</span>
         <button class="btn-primary" style="padding:10px 24px;font-size:11px;"
           onclick="window.open('https://wa.me/6281238012282','_blank')">
           Book Now
@@ -343,11 +342,10 @@
 
     <div class="mobile-menu" id="mobileMenu">
       <span class="nav-link" onclick="scrollTo('home')">Beranda</span>
+      <span class="nav-link" onclick="scrollTo('cabang')">Cabang</span>
       <span class="nav-link" onclick="scrollTo('services')">Layanan</span>
       <span class="nav-link" onclick="scrollTo('gallery')">Galeri</span>
       <span class="nav-link" onclick="scrollTo('reviews')">Ulasan</span>
-      <span class="nav-link" onclick="scrollTo('cabang')">Cabang</span>
-      <span class="nav-link" onclick="scrollTo('contact')">Kontak</span>
     </div>
   </nav>
 
@@ -423,6 +421,120 @@
         <span style="width:4px;height:4px;border-radius:50%;background:#333;display:inline-block;"></span>
         <span>2 Cabang di Bali</span>
       </div>
+    </div>
+  </section>
+
+  <!-- CABANG -->
+  <section id="cabang" style="padding:120px 24px;background:linear-gradient(180deg,rgba(201,169,110,0.03),transparent);">
+    <div style="max-width:1100px;margin:0 auto;">
+
+      <!-- header -->
+      <div class="fade-in-elem" style="text-align:center;margin-bottom:56px;">
+        <span class="float-tag" style="margin-bottom:20px;display:inline-block;">Our Branches</span>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);font-weight:300;margin-top:20px;margin-bottom:16px;">Cabang Kami</h2>
+        <div class="divider"></div>
+      </div>
+
+      <!-- tab switcher -->
+      <div class="fade-in-elem" style="display:flex;justify-content:center;gap:0;margin-bottom:48px;">
+        <button id="tabGS" onclick="switchBranch('gs')" style="
+          font-family:'Outfit',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;
+          padding:13px 36px;border:1px solid #c9a96e;background:#c9a96e;color:#0d0d0d;
+          cursor:pointer;transition:all 0.3s;">Gunung Sanghyang</button>
+        <button id="tabGT" onclick="switchBranch('gt')" style="
+          font-family:'Outfit',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;
+          padding:13px 36px;border:1px solid #333;background:transparent;color:#666;
+          cursor:pointer;transition:all 0.3s;">Gatsu</button>
+      </div>
+
+      <!-- ── GUNUNG SANGHYANG ── -->
+      <div id="panelGS">
+        <div class="branch-grid" style="display:grid;grid-template-columns:1fr 1.4fr;gap:32px;align-items:start;">
+          <div style="background:linear-gradient(145deg,#111,#0e0e0e);border:1px solid #1e1e1e;padding:36px 32px;position:relative;overflow:hidden;">
+            <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#c9a96e,transparent);"></div>
+            <span style="font-family:'Outfit',sans-serif;font-size:9px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;border:1px solid rgba(201,169,110,0.25);padding:4px 12px;">Cabang 1</span>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#e8e0d4;margin:16px 0 4px;">Gunung Sanghyang</h3>
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:28px;">
+              <span style="color:#c9a96e;font-size:12px;">★★★★☆</span>
+              <span style="font-family:'Outfit',sans-serif;font-size:11px;color:#555;">4.4 · 200+ ulasan Google</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:18px;margin-bottom:32px;">
+              <div style="display:flex;gap:14px;">
+                <span style="color:#c9a96e;flex-shrink:0;margin-top:2px;">📍</span>
+                <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;line-height:1.8;">Jl. Gunung Sanghyang No.278<br>Kerobokan Kaja, Kec. Kuta Utara<br>Kabupaten Badung, Bali 80361<br><span style="font-size:11px;color:#444;font-style:italic;">⚠️ Parkir terbatas, disarankan motor</span></p>
+              </div>
+              <div style="display:flex;gap:14px;">
+                <span style="color:#c9a96e;flex-shrink:0;">🕙</span>
+                <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;line-height:1.8;">Senin – Minggu<br>10:00 – 22:00 WITA</p>
+              </div>
+              <div style="display:flex;gap:14px;">
+                <span style="color:#c9a96e;flex-shrink:0;">📞</span>
+                <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;">0812-3801-282</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              <button class="btn-primary" style="padding:11px 24px;font-size:10px;" onclick="window.open('https://wa.me/6281238012282','_blank')">WhatsApp</button>
+              <a href="https://maps.google.com/?q=Jl+Gunung+Sanghyang+No.278+Kerobokan+Bali" target="_blank" class="btn-outline" style="font-size:10px;padding:11px 20px;letter-spacing:2px;text-decoration:none;display:inline-flex;align-items:center;">PETA →</a>
+            </div>
+          </div>
+          <div>
+            <p style="font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:3px;color:#444;text-transform:uppercase;margin-bottom:16px;">Galeri Lokasi</p>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;"><span style="font-size:20px;opacity:0.2;">📷</span><span style="font-family:'Outfit',sans-serif;font-size:9px;color:#333;letter-spacing:1px;">FOTO</span></div>
+              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;"><span style="font-size:20px;opacity:0.2;">📷</span><span style="font-family:'Outfit',sans-serif;font-size:9px;color:#333;letter-spacing:1px;">FOTO</span></div>
+              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;"><span style="font-size:20px;opacity:0.2;">📷</span><span style="font-family:'Outfit',sans-serif;font-size:9px;color:#333;letter-spacing:1px;">FOTO</span></div>
+              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;"><span style="font-size:20px;opacity:0.2;">📷</span><span style="font-family:'Outfit',sans-serif;font-size:9px;color:#333;letter-spacing:1px;">FOTO</span></div>
+              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;"><span style="font-size:20px;opacity:0.2;">📷</span><span style="font-family:'Outfit',sans-serif;font-size:9px;color:#333;letter-spacing:1px;">FOTO</span></div>
+              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;"><span style="font-size:20px;opacity:0.2;">📷</span><span style="font-family:'Outfit',sans-serif;font-size:9px;color:#333;letter-spacing:1px;">FOTO</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── GATSU ── -->
+      <div id="panelGT" style="display:none;">
+        <div class="branch-grid" style="display:grid;grid-template-columns:1fr 1.4fr;gap:32px;align-items:start;">
+          <div style="background:linear-gradient(145deg,#111,#0e0e0e);border:1px solid #1e1e1e;padding:36px 32px;position:relative;overflow:hidden;">
+            <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#c9a96e,transparent);"></div>
+            <span style="font-family:'Outfit',sans-serif;font-size:9px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;border:1px solid rgba(201,169,110,0.25);padding:4px 12px;">Cabang 2</span>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#e8e0d4;margin:16px 0 4px;">Gatsu</h3>
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:28px;">
+              <span style="color:#c9a96e;font-size:12px;">★★★★★</span>
+              <span style="font-family:'Outfit',sans-serif;font-size:11px;color:#555;">4.6 · 88 ulasan Google</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:18px;margin-bottom:32px;">
+              <div style="display:flex;gap:14px;">
+                <span style="color:#c9a96e;flex-shrink:0;margin-top:2px;">📍</span>
+                <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;line-height:1.8;">Jl. Gatot Subroto Tim. No.279<br>Dauh Puri Kaja, Kec. Denpasar Utara<br>Kota Denpasar, Bali 80233</p>
+              </div>
+              <div style="display:flex;gap:14px;">
+                <span style="color:#c9a96e;flex-shrink:0;">🕙</span>
+                <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;line-height:1.8;">Senin – Minggu<br>– 22:00 WITA</p>
+              </div>
+              <div style="display:flex;gap:14px;">
+                <span style="color:#c9a96e;flex-shrink:0;">📞</span>
+                <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;">0812-3801-282</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+              <button class="btn-primary" style="padding:11px 24px;font-size:10px;" onclick="window.open('https://wa.me/6281238012282','_blank')">WhatsApp</button>
+              <a href="https://maps.google.com/?q=Jl+Gatot+Subroto+Timur+No.279+Denpasar+Bali" target="_blank" class="btn-outline" style="font-size:10px;padding:11px 20px;letter-spacing:2px;text-decoration:none;display:inline-flex;align-items:center;">PETA →</a>
+            </div>
+          </div>
+          <div>
+            <p style="font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:3px;color:#444;text-transform:uppercase;margin-bottom:16px;">Galeri Lokasi</p>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px dashed #1e1e1e;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;"><span style="font-size:20px;opacity:0.15;">📷</span><span style="font-family:'Outfit',sans-serif;font-size:9px;color:#2a2a2a;letter-spacing:1px;">SOON</span></div>
+              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px dashed #1e1e1e;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;"><span style="font-size:20px;opacity:0.15;">📷</span><span style="font-family:'Outfit',sans-serif;font-size:9px;color:#2a2a2a;letter-spacing:1px;">SOON</span></div>
+              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px dashed #1e1e1e;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;"><span style="font-size:20px;opacity:0.15;">📷</span><span style="font-family:'Outfit',sans-serif;font-size:9px;color:#2a2a2a;letter-spacing:1px;">SOON</span></div>
+              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px dashed #1e1e1e;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;"><span style="font-size:20px;opacity:0.15;">📷</span><span style="font-family:'Outfit',sans-serif;font-size:9px;color:#2a2a2a;letter-spacing:1px;">SOON</span></div>
+              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px dashed #1e1e1e;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;"><span style="font-size:20px;opacity:0.15;">📷</span><span style="font-family:'Outfit',sans-serif;font-size:9px;color:#2a2a2a;letter-spacing:1px;">SOON</span></div>
+              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px dashed #1e1e1e;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;"><span style="font-size:20px;opacity:0.15;">📷</span><span style="font-family:'Outfit',sans-serif;font-size:9px;color:#2a2a2a;letter-spacing:1px;">SOON</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -685,292 +797,16 @@
     </div>
   </section>
 
-  <!-- CABANG -->
-  <section id="cabang" style="padding:120px 24px;background:linear-gradient(180deg,rgba(201,169,110,0.03),transparent);">
-    <div style="max-width:1100px;margin:0 auto;">
-
-      <!-- header -->
-      <div class="fade-in-elem" style="text-align:center;margin-bottom:56px;">
-        <span class="float-tag" style="margin-bottom:20px;display:inline-block;">Our Branches</span>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);font-weight:300;margin-top:20px;margin-bottom:16px;">Cabang Kami</h2>
-        <div class="divider"></div>
-      </div>
-
-      <!-- tab switcher -->
-      <div class="fade-in-elem" style="display:flex;justify-content:center;gap:0;margin-bottom:48px;">
-        <button id="tabGS" onclick="switchBranch('gs')" style="
-          font-family:'Outfit',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;
-          padding:13px 36px;border:1px solid #c9a96e;background:#c9a96e;color:#0d0d0d;
-          cursor:pointer;transition:all 0.3s;">Gunung Sanghyang</button>
-        <button id="tabGT" onclick="switchBranch('gt')" style="
-          font-family:'Outfit',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;
-          padding:13px 36px;border:1px solid #333;background:transparent;color:#666;
-          cursor:pointer;transition:all 0.3s;">Gatsu</button>
-      </div>
-
-      <!-- ── GUNUNG SANGHYANG ── -->
-      <div id="panelGS">
-        <div class="branch-grid" style="display:grid;grid-template-columns:1fr 1.4fr;gap:32px;align-items:start;">
-
-          <!-- info card -->
-          <div style="background:linear-gradient(145deg,#111,#0e0e0e);border:1px solid #1e1e1e;padding:36px 32px;position:relative;overflow:hidden;">
-            <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#c9a96e,transparent);"></div>
-            <span style="font-family:'Outfit',sans-serif;font-size:9px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;border:1px solid rgba(201,169,110,0.25);padding:4px 12px;">Cabang 1</span>
-            <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#e8e0d4;margin:16px 0 4px;">Gunung Sanghyang</h3>
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:28px;">
-              <span style="color:#c9a96e;font-size:12px;">★★★★☆</span>
-              <span style="font-family:'Outfit',sans-serif;font-size:11px;color:#555;">4.4 · 200+ ulasan Google</span>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:18px;margin-bottom:32px;">
-              <div style="display:flex;gap:14px;">
-                <span style="color:#c9a96e;flex-shrink:0;margin-top:2px;">📍</span>
-                <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;line-height:1.8;">
-                  Jl. Gunung Sanghyang No.278<br>Kerobokan Kaja, Kec. Kuta Utara<br>Kabupaten Badung, Bali 80361
-                  <br><span style="font-size:11px;color:#444;font-style:italic;">⚠️ Parkir terbatas, disarankan motor</span>
-                </p>
-              </div>
-              <div style="display:flex;gap:14px;">
-                <span style="color:#c9a96e;flex-shrink:0;">🕙</span>
-                <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;line-height:1.8;">Senin – Minggu<br>10:00 – 22:00 WITA</p>
-              </div>
-              <div style="display:flex;gap:14px;">
-                <span style="color:#c9a96e;flex-shrink:0;">📞</span>
-                <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;">0812-3801-282</p>
-              </div>
-            </div>
-            <div style="display:flex;gap:12px;flex-wrap:wrap;">
-              <button class="btn-primary" style="padding:11px 24px;font-size:10px;"
-                onclick="window.open('https://wa.me/6281238012282','_blank')">WhatsApp</button>
-              <a href="https://maps.google.com/?q=Jl+Gunung+Sanghyang+No.278+Kerobokan+Bali" target="_blank" class="btn-outline"
-                style="font-size:10px;padding:11px 20px;letter-spacing:2px;text-decoration:none;display:inline-flex;align-items:center;">
-                PETA →
-              </a>
-            </div>
-          </div>
-
-          <!-- photo grid -->
-          <div>
-            <p style="font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:3px;color:#444;text-transform:uppercase;margin-bottom:16px;">Galeri Lokasi</p>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
-              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;">
-                <span style="font-size:20px;opacity:0.2;">📷</span>
-                <span style="font-family:'Outfit',sans-serif;font-size:9px;color:#333;letter-spacing:1px;">FOTO</span>
-              </div>
-              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;">
-                <span style="font-size:20px;opacity:0.2;">📷</span>
-                <span style="font-family:'Outfit',sans-serif;font-size:9px;color:#333;letter-spacing:1px;">FOTO</span>
-              </div>
-              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;">
-                <span style="font-size:20px;opacity:0.2;">📷</span>
-                <span style="font-family:'Outfit',sans-serif;font-size:9px;color:#333;letter-spacing:1px;">FOTO</span>
-              </div>
-              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;">
-                <span style="font-size:20px;opacity:0.2;">📷</span>
-                <span style="font-family:'Outfit',sans-serif;font-size:9px;color:#333;letter-spacing:1px;">FOTO</span>
-              </div>
-              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;">
-                <span style="font-size:20px;opacity:0.2;">📷</span>
-                <span style="font-family:'Outfit',sans-serif;font-size:9px;color:#333;letter-spacing:1px;">FOTO</span>
-              </div>
-              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px solid #1a1a1a;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;">
-                <span style="font-size:20px;opacity:0.2;">📷</span>
-                <span style="font-family:'Outfit',sans-serif;font-size:9px;color:#333;letter-spacing:1px;">FOTO</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ── GATSU ── -->
-      <div id="panelGT" style="display:none;">
-        <div class="branch-grid" style="display:grid;grid-template-columns:1fr 1.4fr;gap:32px;align-items:start;">
-
-          <!-- info card -->
-          <div style="background:linear-gradient(145deg,#111,#0e0e0e);border:1px solid #1e1e1e;padding:36px 32px;position:relative;overflow:hidden;">
-            <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#c9a96e,transparent);"></div>
-            <span style="font-family:'Outfit',sans-serif;font-size:9px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;border:1px solid rgba(201,169,110,0.25);padding:4px 12px;">Cabang 2</span>
-            <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#e8e0d4;margin:16px 0 4px;">Gatsu</h3>
-            <div style="display:flex;align-items:center;gap:6px;margin-bottom:28px;">
-              <span style="color:#c9a96e;font-size:12px;">★★★★★</span>
-              <span style="font-family:'Outfit',sans-serif;font-size:11px;color:#555;">4.6 · 88 ulasan Google</span>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:18px;margin-bottom:32px;">
-              <div style="display:flex;gap:14px;">
-                <span style="color:#c9a96e;flex-shrink:0;margin-top:2px;">📍</span>
-                <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;line-height:1.8;">
-                  Jl. Gatot Subroto Tim. No.279<br>Dauh Puri Kaja, Kec. Denpasar Utara<br>Kota Denpasar, Bali 80233
-                </p>
-              </div>
-              <div style="display:flex;gap:14px;">
-                <span style="color:#c9a96e;flex-shrink:0;">🕙</span>
-                <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;line-height:1.8;">Senin – Minggu<br>– 22:00 WITA</p>
-              </div>
-              <div style="display:flex;gap:14px;">
-                <span style="color:#c9a96e;flex-shrink:0;">📞</span>
-                <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;">0812-3801-282</p>
-              </div>
-            </div>
-            <div style="display:flex;gap:12px;flex-wrap:wrap;">
-              <button class="btn-primary" style="padding:11px 24px;font-size:10px;"
-                onclick="window.open('https://wa.me/6281238012282','_blank')">WhatsApp</button>
-              <a href="https://maps.google.com/?q=Jl+Gatot+Subroto+Timur+No.279+Denpasar+Bali" target="_blank" class="btn-outline"
-                style="font-size:10px;padding:11px 20px;letter-spacing:2px;text-decoration:none;display:inline-flex;align-items:center;">
-                PETA →
-              </a>
-            </div>
-          </div>
-
-          <!-- photo grid kosong -->
-          <div>
-            <p style="font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:3px;color:#444;text-transform:uppercase;margin-bottom:16px;">Galeri Lokasi</p>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
-              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px dashed #1e1e1e;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;">
-                <span style="font-size:20px;opacity:0.15;">📷</span>
-                <span style="font-family:'Outfit',sans-serif;font-size:9px;color:#2a2a2a;letter-spacing:1px;">SOON</span>
-              </div>
-              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px dashed #1e1e1e;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;">
-                <span style="font-size:20px;opacity:0.15;">📷</span>
-                <span style="font-family:'Outfit',sans-serif;font-size:9px;color:#2a2a2a;letter-spacing:1px;">SOON</span>
-              </div>
-              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px dashed #1e1e1e;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;">
-                <span style="font-size:20px;opacity:0.15;">📷</span>
-                <span style="font-family:'Outfit',sans-serif;font-size:9px;color:#2a2a2a;letter-spacing:1px;">SOON</span>
-              </div>
-              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px dashed #1e1e1e;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;">
-                <span style="font-size:20px;opacity:0.15;">📷</span>
-                <span style="font-family:'Outfit',sans-serif;font-size:9px;color:#2a2a2a;letter-spacing:1px;">SOON</span>
-              </div>
-              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px dashed #1e1e1e;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;">
-                <span style="font-size:20px;opacity:0.15;">📷</span>
-                <span style="font-family:'Outfit',sans-serif;font-size:9px;color:#2a2a2a;letter-spacing:1px;">SOON</span>
-              </div>
-              <div style="aspect-ratio:1;background:linear-gradient(135deg,#161616,#111);border:1px dashed #1e1e1e;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;">
-                <span style="font-size:20px;opacity:0.15;">📷</span>
-                <span style="font-family:'Outfit',sans-serif;font-size:9px;color:#2a2a2a;letter-spacing:1px;">SOON</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CONTACT / FOOTER -->
-  <section id="contact" style="
-    padding:120px 24px 60px;
-    background:linear-gradient(180deg,transparent,rgba(201,169,110,0.05));
-  ">
-    <div style="max-width:1000px;margin:0 auto;">
-      <div class="fade-in-elem" style="text-align:center;margin-bottom:64px;">
-        <span class="float-tag" style="margin-bottom:20px;display:inline-block;">Visit Us</span>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);font-weight:300;margin-top:20px;margin-bottom:16px;">
-          Kunjungi Kami
-        </h2>
-        <div class="divider"></div>
-      </div>
-
-      <div class="fade-in-elem" style="transition-delay:0.1s;">
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-bottom:60px;">
-
-          <!-- CABANG 1 -->
-          <div style="background:linear-gradient(145deg,#111,#0e0e0e);border:1px solid #1e1e1e;padding:36px 32px;position:relative;overflow:hidden;">
-            <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#c9a96e,transparent);"></div>
-            <div style="margin-bottom:24px;">
-              <span style="font-family:'Outfit',sans-serif;font-size:9px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;border:1px solid rgba(201,169,110,0.25);padding:4px 12px;">Cabang 1</span>
-              <h3 style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;color:#e8e0d4;margin-top:14px;margin-bottom:4px;">Gunung Sanghyang</h3>
-              <div style="display:flex;align-items:center;gap:6px;">
-                <span style="color:#c9a96e;font-size:12px;">★★★★☆</span>
-                <span style="font-family:'Outfit',sans-serif;font-size:11px;color:#555;">4.4 · 200+ ulasan</span>
-              </div>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:28px;">
-              <div style="display:flex;gap:14px;">
-                <span style="color:#c9a96e;font-size:14px;margin-top:2px;flex-shrink:0;">📍</span>
-                <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;line-height:1.8;">
-                  Jl. Gunung Sanghyang No.278<br>Kerobokan Kaja, Kec. Kuta Utara<br>Kabupaten Badung, Bali 80361
-                  <br><span style="font-size:11px;color:#444;font-style:italic;">⚠️ Parkir terbatas, disarankan motor</span>
-                </p>
-              </div>
-              <div style="display:flex;gap:14px;">
-                <span style="color:#c9a96e;font-size:14px;flex-shrink:0;">🕙</span>
-                <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;line-height:1.8;">Senin – Minggu &nbsp;·&nbsp; 10:00 – 22:00 WITA</p>
-              </div>
-              <div style="display:flex;gap:14px;">
-                <span style="color:#c9a96e;font-size:14px;flex-shrink:0;">📞</span>
-                <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;">0812-3801-282</p>
-              </div>
-            </div>
-            <div style="display:flex;gap:12px;flex-wrap:wrap;">
-              <button class="btn-primary" style="padding:11px 24px;font-size:10px;"
-                onclick="window.open('https://wa.me/6281238012282','_blank')">WhatsApp</button>
-              <a href="https://maps.google.com/?q=Jl+Gunung+Sanghyang+No.278+Kerobokan+Bali" target="_blank"
-                style="font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:2px;color:#666;text-decoration:none;display:flex;align-items:center;gap:6px;border:1px solid #222;padding:11px 20px;transition:all 0.3s;"
-                onmouseover="this.style.borderColor='#c9a96e';this.style.color='#c9a96e'" onmouseout="this.style.borderColor='#222';this.style.color='#666'">
-                PETA →
-              </a>
-            </div>
-          </div>
-
-          <!-- CABANG 2 -->
-          <div style="background:linear-gradient(145deg,#111,#0e0e0e);border:1px solid #1e1e1e;padding:36px 32px;position:relative;overflow:hidden;">
-            <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#c9a96e,transparent);"></div>
-            <div style="margin-bottom:24px;">
-              <span style="font-family:'Outfit',sans-serif;font-size:9px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;border:1px solid rgba(201,169,110,0.25);padding:4px 12px;">Cabang 2</span>
-              <h3 style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;color:#e8e0d4;margin-top:14px;margin-bottom:4px;">Gatsu</h3>
-              <div style="display:flex;align-items:center;gap:6px;">
-                <span style="color:#c9a96e;font-size:12px;">★★★★★</span>
-                <span style="font-family:'Outfit',sans-serif;font-size:11px;color:#555;">4.6 · 88 ulasan</span>
-              </div>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:28px;">
-              <div style="display:flex;gap:14px;">
-                <span style="color:#c9a96e;font-size:14px;margin-top:2px;flex-shrink:0;">📍</span>
-                <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;line-height:1.8;">
-                  Jl. Gatot Subroto Tim. No.279<br>Dauh Puri Kaja, Kec. Denpasar Utara<br>Kota Denpasar, Bali 80233
-                </p>
-              </div>
-              <div style="display:flex;gap:14px;">
-                <span style="color:#c9a96e;font-size:14px;flex-shrink:0;">🕙</span>
-                <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;line-height:1.8;">Senin – Minggu &nbsp;·&nbsp; – 22:00 WITA</p>
-              </div>
-              <div style="display:flex;gap:14px;">
-                <span style="color:#c9a96e;font-size:14px;flex-shrink:0;">📞</span>
-                <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;">0812-3801-282</p>
-              </div>
-            </div>
-            <div style="display:flex;gap:12px;flex-wrap:wrap;">
-              <button class="btn-primary" style="padding:11px 24px;font-size:10px;"
-                onclick="window.open('https://wa.me/6281238012282','_blank')">WhatsApp</button>
-              <a href="https://maps.google.com/?q=Jl+Gatot+Subroto+Timur+No.279+Denpasar+Bali" target="_blank"
-                style="font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:2px;color:#666;text-decoration:none;display:flex;align-items:center;gap:6px;border:1px solid #222;padding:11px 20px;transition:all 0.3s;"
-                onmouseover="this.style.borderColor='#c9a96e';this.style.color='#c9a96e'" onmouseout="this.style.borderColor='#222';this.style.color='#666'">
-                PETA →
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- FOOTER -->
-      <div style="border-top:1px solid #1a1a1a;padding-top:40px;text-align:center;">
-        <img src="logo.jpg" alt="Pearl Barber Shop" style="
-          height:88px;
-          mix-blend-mode:screen;
-          filter:sepia(0.2) saturate(2) brightness(0.95) drop-shadow(0 0 12px rgba(201,169,110,0.25));
-          display:block;
-          margin:0 auto 20px;
-          opacity:0.75;
-        ">
-        <p style="font-family:'Outfit',sans-serif;font-size:11px;color:#333;">
-          &copy; 2026 Pearl Barber Shop. All rights reserved.
-        </p>
-      </div>
-    </div>
-  </section>
+  <!-- FOOTER -->
+  <footer style="padding:48px 24px;background:linear-gradient(180deg,transparent,rgba(201,169,110,0.04));border-top:1px solid #1a1a1a;text-align:center;">
+    <img src="logo.jpg" alt="Pearl Barber Shop" style="
+      height:80px;mix-blend-mode:screen;
+      filter:sepia(0.2) saturate(2) brightness(0.95) drop-shadow(0 0 12px rgba(201,169,110,0.25));
+      display:block;margin:0 auto 16px;opacity:0.7;
+    ">
+    <p style="font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:4px;color:#333;margin-bottom:8px;">BARBER SHOP · KEEP IT HANDSOME</p>
+    <p style="font-family:'Outfit',sans-serif;font-size:11px;color:#2a2a2a;">&copy; 2026 Pearl Barber Shop. All rights reserved.</p>
+  </footer>
 
   <!-- VIDEO MODAL -->
   <div id="videoModal" style="
@@ -1139,7 +975,7 @@
     }
 
     // Active nav on scroll
-    const sections = ['home', 'services', 'gallery', 'reviews', 'cabang', 'contact'];
+    const sections = ['home', 'cabang', 'services', 'gallery', 'reviews'];
     window.addEventListener('scroll', () => {
       for (const id of sections) {
         const el = document.getElementById(id);
