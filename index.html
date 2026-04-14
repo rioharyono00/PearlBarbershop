@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pearl Barber Shop — Keep It Handsome</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Bebas+Neue&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background: #0d0d0d;
+      color: #e8e0d4;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .nav-link {
+      color: #a09880;
+      text-decoration: none;
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: color 0.3s;
+      padding: 4px 0;
+      border-bottom: 1px solid transparent;
+    }
+    .nav-link:hover, .nav-link.active {
+      color: #c9a96e;
+      border-bottom-color: #c9a96e;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #c9a96e, #a8873e);
+      color: #0d0d0d;
+      border: none;
+      padding: 16px 40px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201,169,110,0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #c9a96e;
+      border: 1px solid #c9a96e;
+      padding: 14px 36px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.4s;
+    }
+    .btn-outline:hover {
+      background: #c9a96e;
+      color: #0d0d0d;
+    }
+
+    .service-card {
+      background: linear-gradient(145deg, #161616, #111);
+      border: 1px solid #222;
+      padding: 32px 28px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .service-card:hover {
+      border-color: #333;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+    .service-card:hover::before { opacity: 1; }
+
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+      cursor: pointer;
+      border-radius: 4px;
+      border: 1px solid #1a1a1a;
+    }
+    .gallery-item .gallery-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .gallery-item .overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(13,13,13,0.6);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .gallery-item:hover .overlay { opacity: 1; }
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    .review-card {
+      background: #111;
+      border: 1px solid #1a1a1a;
+      padding: 32px;
+      border-left: 2px solid #c9a96e;
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: #c9a96e;
+      margin: 0 auto;
+    }
+
+    .float-tag {
+      display: inline-block;
+      background: rgba(201,169,110,0.1);
+      border: 1px solid rgba(201,169,110,0.2);
+      padding: 6px 16px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: #c9a96e;
+      text-transform: uppercase;
+    }
+
+    .noise-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scaleIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .hero-title {
+      animation: fadeInUp 1.2s ease forwards;
+      animation-delay: 0.3s;
+      opacity: 0;
+    }
+    .hero-tagline {
+      animation: fadeInUp 1.2s ease forwards;
+      animation-delay: 0.6s;
+      opacity: 0;
+    }
+    .hero-cta {
+      animation: fadeInUp 1.2s ease forwards;
+      animation-delay: 0.9s;
+      opacity: 0;
+    }
+    .hero-badge {
+      animation: scaleIn 0.8s ease forwards;
+      animation-delay: 1.2s;
+      opacity: 0;
+    }
+
+    .fade-in-elem {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in-elem.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(13,13,13,0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(201,169,110,0.1);
+      animation: slideDown 0.6s ease;
+    }
+    .navbar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+    }
+    .logo-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: #c9a96e;
+    }
+    .logo-sub {
+      font-family: 'Outfit', sans-serif;
+      font-size: 9px;
+      letter-spacing: 4px;
+      color: #666;
+      text-transform: uppercase;
+    }
+    .desktop-nav {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .mobile-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      background: none;
+      border: none;
+    }
+    .mobile-toggle span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: #c9a96e;
+      transition: 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      padding: 20px 24px 28px;
+      flex-direction: column;
+      gap: 20px;
+      border-top: 1px solid #1a1a1a;
+    }
+    .mobile-menu.open { display: flex; }
+
+    @media (max-width: 768px) {
+      .desktop-nav { display: none !important; }
+      .mobile-toggle { display: flex !important; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+    @media (min-width: 769px) {
+      .mobile-toggle { display: none !important; }
+      .mobile-menu { display: none !important; }
+    }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0d0d0d; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #c9a96e; }
+
+    .star { color: #c9a96e; letter-spacing: 2px; }
+
+    .map-placeholder {
+      width: 100%;
+      height: 280px;
+      border: 1px solid #1a1a1a;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 80px;
+    }
+    .map-placeholder iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: grayscale(1) invert(0.92) sepia(0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="noise-overlay"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <div class="logo" onclick="scrollTo('home')">
+        <img src="logo.jpg" alt="Pearl Barber Shop"
+          style="height:46px;mix-blend-mode:screen;filter:sepia(0.25) saturate(2.2) brightness(1.05);display:block;">
+      </div>
+
+      <div class="desktop-nav">
+        <span class="nav-link active" data-section="home" onclick="scrollTo('home')">Beranda</span>
+        <span class="nav-link" data-section="services" onclick="scrollTo('services')">Layanan</span>
+        <span class="nav-link" data-section="gallery" onclick="scrollTo('gallery')">Galeri</span>
+        <span class="nav-link" data-section="reviews" onclick="scrollTo('reviews')">Ulasan</span>
+        <span class="nav-link" data-section="contact" onclick="scrollTo('contact')">Kontak</span>
+        <button class="btn-primary" style="padding:10px 24px;font-size:11px;"
+          onclick="window.open('https://wa.me/6281238012282','_blank')">
+          Book Now
+        </button>
+      </div>
+
+      <button class="mobile-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Menu">
+        <span id="bar1"></span>
+        <span id="bar2"></span>
+        <span id="bar3"></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <span class="nav-link" onclick="scrollTo('home')">Beranda</span>
+      <span class="nav-link" onclick="scrollTo('services')">Layanan</span>
+      <span class="nav-link" onclick="scrollTo('gallery')">Galeri</span>
+      <span class="nav-link" onclick="scrollTo('reviews')">Ulasan</span>
+      <span class="nav-link" onclick="scrollTo('contact')">Kontak</span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" style="
+    min-height:100vh;
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+    background: radial-gradient(ellipse at 30% 50%, rgba(201,169,110,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 30%, rgba(201,169,110,0.03) 0%, transparent 50%), #0d0d0d;
+    overflow:hidden;
+  ">
+    <canvas id="heroCanvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+    <div style="position:absolute;top:20%;left:60px;width:1px;height:30%;background:linear-gradient(to bottom,transparent,rgba(201,169,110,0.15),transparent);z-index:1;"></div>
+    <div style="position:absolute;top:25%;right:60px;width:1px;height:25%;background:linear-gradient(to bottom,transparent,rgba(201,169,110,0.1),transparent);z-index:1;"></div>
+
+    <div style="text-align:center;padding:0 24px;max-width:800px;position:relative;z-index:1;">
+      <div class="hero-badge" style="margin-bottom:32px;">
+        <img src="logo.jpg" alt="Pearl Barber Shop" style="
+          width:148px;
+          mix-blend-mode:screen;
+          filter:sepia(0.25) saturate(2.2) brightness(1.05) drop-shadow(0 0 18px rgba(201,169,110,0.4));
+          display:block;
+          margin:0 auto;
+        ">
+      </div>
+
+      <h1 class="hero-title" style="
+        font-family:'Cormorant Garamond',serif;
+        font-size:clamp(48px,10vw,100px);
+        font-weight:300;
+        line-height:0.95;
+        color:#e8e0d4;
+        margin-bottom:8px;
+      ">Pearl</h1>
+
+      <p class="hero-title" style="
+        font-family:'Bebas Neue',sans-serif;
+        font-size:clamp(14px,3vw,20px);
+        letter-spacing:12px;
+        color:#c9a96e;
+        margin-bottom:32px;
+        animation-delay:0.5s;
+      ">BARBER SHOP</p>
+
+      <p class="hero-tagline" style="
+        font-family:'Cormorant Garamond',serif;
+        font-size:clamp(18px,3vw,28px);
+        font-weight:300;
+        font-style:italic;
+        color:#a09880;
+        margin-bottom:48px;
+      ">Keep It Handsome</p>
+
+      <div class="hero-cta" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn-primary" onclick="window.open('https://wa.me/6281238012282','_blank')">
+          Book Appointment
+        </button>
+        <button class="btn-outline" onclick="scrollTo('services')">
+          Lihat Layanan
+        </button>
+      </div>
+
+      <div class="hero-badge" style="
+        margin-top:60px;display:flex;align-items:center;justify-content:center;gap:24px;
+        font-family:'Outfit',sans-serif;font-size:12px;color:#666;
+      ">
+        <span style="display:flex;align-items:center;gap:6px;">
+          <span style="color:#c9a96e;font-size:16px;">★</span> 4.4 Rating
+        </span>
+        <span style="width:4px;height:4px;border-radius:50%;background:#333;display:inline-block;"></span>
+        <span>200+ Ulasan</span>
+        <span style="width:4px;height:4px;border-radius:50%;background:#333;display:inline-block;"></span>
+        <span>Buka s/d 22:00</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" style="padding:120px 24px;max-width:1200px;margin:0 auto;">
+    <div class="fade-in-elem" style="text-align:center;margin-bottom:64px;">
+      <span class="float-tag" style="margin-bottom:20px;display:inline-block;">Our Services</span>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);font-weight:300;margin-top:20px;margin-bottom:16px;">
+        Layanan Kami
+      </h2>
+      <div class="divider"></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;">
+
+      <div class="fade-in-elem service-card" style="transition-delay:0.0s;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
+          <span style="font-size:28px;">✂️</span>
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#c9a96e;">75K</span>
+        </div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;margin-bottom:8px;">Haircut</h3>
+        <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;line-height:1.6;margin-bottom:16px;">Potongan presisi sesuai karakter wajah</p>
+        <span style="font-family:'Outfit',sans-serif;font-size:11px;color:#555;letter-spacing:1px;">⏱ 45 min</span>
+      </div>
+
+      <div class="fade-in-elem service-card" style="transition-delay:0.1s;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
+          <span style="font-size:28px;">🪒</span>
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#c9a96e;">50K</span>
+        </div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;margin-bottom:8px;">Beard Trim</h3>
+        <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;line-height:1.6;margin-bottom:16px;">Cukur &amp; rapikan jenggot dengan detail</p>
+        <span style="font-family:'Outfit',sans-serif;font-size:11px;color:#555;letter-spacing:1px;">⏱ 30 min</span>
+      </div>
+
+      <div class="fade-in-elem service-card" style="transition-delay:0.2s;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
+          <span style="font-size:28px;">💈</span>
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#c9a96e;">110K</span>
+        </div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;margin-bottom:8px;">Hair + Beard</h3>
+        <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;line-height:1.6;margin-bottom:16px;">Paket lengkap potong rambut &amp; jenggot</p>
+        <span style="font-family:'Outfit',sans-serif;font-size:11px;color:#555;letter-spacing:1px;">⏱ 60 min</span>
+      </div>
+
+      <div class="fade-in-elem service-card" style="transition-delay:0.3s;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
+          <span style="font-size:28px;">🧴</span>
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#c9a96e;">30K</span>
+        </div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;margin-bottom:8px;">Hair Wash</h3>
+        <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;line-height:1.6;margin-bottom:16px;">Cuci rambut dengan pijat kepala relaksasi</p>
+        <span style="font-family:'Outfit',sans-serif;font-size:11px;color:#555;letter-spacing:1px;">⏱ 20 min</span>
+      </div>
+
+      <div class="fade-in-elem service-card" style="transition-delay:0.4s;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
+          <span style="font-size:28px;">🔥</span>
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#c9a96e;">60K</span>
+        </div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;margin-bottom:8px;">Hot Towel Shave</h3>
+        <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;line-height:1.6;margin-bottom:16px;">Classic shave dengan handuk panas</p>
+        <span style="font-family:'Outfit',sans-serif;font-size:11px;color:#555;letter-spacing:1px;">⏱ 35 min</span>
+      </div>
+
+      <div class="fade-in-elem service-card" style="transition-delay:0.5s;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;">
+          <span style="font-size:28px;">⭐</span>
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#c9a96e;">50K</span>
+        </div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;margin-bottom:8px;">Kids Cut</h3>
+        <p style="font-family:'Outfit',sans-serif;font-size:13px;color:#777;line-height:1.6;margin-bottom:16px;">Potongan rapi untuk anak-anak</p>
+        <span style="font-family:'Outfit',sans-serif;font-size:11px;color:#555;letter-spacing:1px;">⏱ 30 min</span>
+      </div>
+
+    </div>
+
+    <div class="fade-in-elem" style="transition-delay:0.3s;">
+      <p style="text-align:center;margin-top:40px;font-family:'Outfit',sans-serif;font-size:12px;color:#555;font-style:italic;">
+        * Harga bersifat estimasi, hubungi kami untuk informasi terbaru
+      </p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" style="
+    padding:120px 24px;
+    background:linear-gradient(180deg,rgba(201,169,110,0.03),transparent,rgba(201,169,110,0.03));
+  ">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="fade-in-elem" style="text-align:center;margin-bottom:64px;">
+        <span class="float-tag" style="margin-bottom:20px;display:inline-block;">Portfolio</span>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);font-weight:300;margin-top:20px;margin-bottom:16px;">
+          Galeri Gaya
+        </h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="gallery-grid" style="display:grid;grid-template-columns:repeat(6,1fr);gap:10px;">
+
+        <div class="fade-in-elem" style="transition-delay:0.0s;">
+          <div class="gallery-item">
+            <img src="gaya%20rambut/classic%20pompadour.jpg" alt="Classic Pompadour"
+              style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.6s ease;">
+            <div class="overlay" style="flex-direction:column;gap:8px;background:linear-gradient(to top,rgba(13,13,13,0.88) 0%,rgba(13,13,13,0.2) 60%,transparent 100%);">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#e8e0d4;">Classic Pompadour</span>
+              <span style="font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;">Lihat Detail</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="fade-in-elem" style="transition-delay:0.08s;">
+          <div class="gallery-item">
+            <img src="gaya%20rambut/texture%20crop.jpg" alt="Textured Crop"
+              style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.6s ease;">
+            <div class="overlay" style="flex-direction:column;gap:8px;background:linear-gradient(to top,rgba(13,13,13,0.88) 0%,rgba(13,13,13,0.2) 60%,transparent 100%);">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#e8e0d4;">Textured Crop</span>
+              <span style="font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;">Lihat Detail</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="fade-in-elem" style="transition-delay:0.16s;">
+          <div class="gallery-item">
+            <img src="gaya%20rambut/skin%20fade.jpg" alt="Skin Fade"
+              style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.6s ease;">
+            <div class="overlay" style="flex-direction:column;gap:8px;background:linear-gradient(to top,rgba(13,13,13,0.88) 0%,rgba(13,13,13,0.2) 60%,transparent 100%);">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#e8e0d4;">Skin Fade</span>
+              <span style="font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;">Lihat Detail</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="fade-in-elem" style="transition-delay:0.24s;">
+          <div class="gallery-item">
+            <img src="gaya%20rambut/slick%20back.jpg" alt="Slick Back"
+              style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.6s ease;">
+            <div class="overlay" style="flex-direction:column;gap:8px;background:linear-gradient(to top,rgba(13,13,13,0.88) 0%,rgba(13,13,13,0.2) 60%,transparent 100%);">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#e8e0d4;">Slick Back</span>
+              <span style="font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;">Lihat Detail</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="fade-in-elem" style="transition-delay:0.32s;">
+          <div class="gallery-item" onclick="openVideoModal()" style="cursor:pointer;">
+            <img src="gaya%20rambut/buzz%20cut.jpg" alt="Buzz Cut"
+              style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.6s ease;">
+            <!-- play badge -->
+            <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:36px;height:36px;border-radius:50%;background:rgba(201,169,110,0.2);border:1px solid rgba(201,169,110,0.5);display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:2;">
+              <svg width="12" height="14" viewBox="0 0 12 14" fill="#c9a96e"><polygon points="1,0 12,7 1,14"/></svg>
+            </div>
+            <div class="overlay" style="flex-direction:column;gap:8px;background:linear-gradient(to top,rgba(13,13,13,0.88) 0%,rgba(13,13,13,0.2) 60%,transparent 100%);">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#e8e0d4;">Buzz Cut</span>
+              <span style="font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;">▶ Putar Video</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="fade-in-elem" style="transition-delay:0.4s;">
+          <div class="gallery-item">
+            <img src="gaya%20rambut/beard%20styling.jpg" alt="Beard Styling"
+              style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.6s ease;">
+            <div class="overlay" style="flex-direction:column;gap:8px;background:linear-gradient(to top,rgba(13,13,13,0.88) 0%,rgba(13,13,13,0.2) 60%,transparent 100%);">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#e8e0d4;">Beard Styling</span>
+              <span style="font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:3px;color:#c9a96e;text-transform:uppercase;">Lihat Detail</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" style="padding:120px 24px;max-width:1000px;margin:0 auto;">
+    <div class="fade-in-elem" style="text-align:center;margin-bottom:64px;">
+      <span class="float-tag" style="margin-bottom:20px;display:inline-block;">Testimonials</span>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);font-weight:300;margin-top:20px;margin-bottom:12px;">
+        Kata Mereka
+      </h2>
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-top:16px;">
+        <span class="star">★★★★☆</span>
+        <span style="font-family:'Outfit',sans-serif;font-size:14px;color:#888;">4.4 dari 200+ ulasan Google</span>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:20px;">
+
+      <div class="fade-in-elem review-card" style="transition-delay:0.0s;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+          <div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;margin-bottom:4px;">Krismalia Meisca</p>
+            <span style="font-family:'Outfit',sans-serif;font-size:11px;color:#555;">5 bulan lalu</span>
+          </div>
+          <span class="star">★★★★★</span>
+        </div>
+        <p style="font-family:'Outfit',sans-serif;font-size:14px;color:#999;line-height:1.8;font-style:italic;">
+          "Barberman-nya so talented, selalu buat pacar aku keliatan makin charming setelah potong rambut. Recommended!"
+        </p>
+      </div>
+
+      <div class="fade-in-elem review-card" style="transition-delay:0.15s;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+          <div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;margin-bottom:4px;">Євгеній Шабл</p>
+            <span style="font-family:'Outfit',sans-serif;font-size:11px;color:#555;">5 bulan lalu</span>
+          </div>
+          <span class="star">★★★★★</span>
+        </div>
+        <p style="font-family:'Outfit',sans-serif;font-size:14px;color:#999;line-height:1.8;font-style:italic;">
+          "Really good haircut! Did everything like I want, also good beard shaving! Recommend this place!"
+        </p>
+      </div>
+
+      <div class="fade-in-elem review-card" style="transition-delay:0.3s;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+          <div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:600;margin-bottom:4px;">Pelanggan Setia</p>
+            <span style="font-family:'Outfit',sans-serif;font-size:11px;color:#555;">3 bulan lalu</span>
+          </div>
+          <span class="star">★★★★★</span>
+        </div>
+        <p style="font-family:'Outfit',sans-serif;font-size:14px;color:#999;line-height:1.8;font-style:italic;">
+          "Langganan suami, hasil selalu oke. Barbershop terbaik di Denpasar Barat!"
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT / FOOTER -->
+  <section id="contact" style="
+    padding:120px 24px 60px;
+    background:linear-gradient(180deg,transparent,rgba(201,169,110,0.05));
+  ">
+    <div style="max-width:1000px;margin:0 auto;">
+      <div class="fade-in-elem" style="text-align:center;margin-bottom:64px;">
+        <span class="float-tag" style="margin-bottom:20px;display:inline-block;">Visit Us</span>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);font-weight:300;margin-top:20px;margin-bottom:16px;">
+          Kunjungi Kami
+        </h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="fade-in-elem" style="transition-delay:0.1s;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px;text-align:center;margin-bottom:60px;">
+
+          <div>
+            <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#c9a96e;letter-spacing:3px;margin-bottom:16px;">ALAMAT</p>
+            <p style="font-family:'Outfit',sans-serif;font-size:14px;color:#888;line-height:1.8;">
+              Jl. Gunung Sanghyang No.278<br>
+              Kerobokan Kaja, Kec. Kuta Utara<br>
+              Kabupaten Badung, Bali 80361
+            </p>
+            <p style="font-family:'Outfit',sans-serif;font-size:11px;color:#555;margin-top:12px;font-style:italic;">
+              ⚠️ Parkir terbatas untuk mobil, disarankan motor/sepeda
+            </p>
+          </div>
+
+          <div>
+            <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#c9a96e;letter-spacing:3px;margin-bottom:16px;">JAM BUKA</p>
+            <p style="font-family:'Outfit',sans-serif;font-size:14px;color:#888;line-height:2;">
+              Senin – Minggu<br>
+              10:00 – 22:00 WITA
+            </p>
+          </div>
+
+          <div>
+            <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#c9a96e;letter-spacing:3px;margin-bottom:16px;">HUBUNGI</p>
+            <p style="font-family:'Outfit',sans-serif;font-size:14px;color:#888;line-height:2;">
+              📞 0812-3801-282
+            </p>
+            <button class="btn-primary" style="margin-top:16px;padding:12px 32px;"
+              onclick="window.open('https://wa.me/6281238012282','_blank')">
+              Chat WhatsApp
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- GOOGLE MAPS -->
+      <div class="fade-in-elem map-placeholder" style="transition-delay:0.2s;">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3944.0!2d115.1686!3d-8.6546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd23d6a9a1234ab%3A0x1234567890abcdef!2sJl.%20Gunung%20Sanghyang%20No.278%2C%20Kerobokan%20Kaja%2C%20Kuta%20Utara%2C%20Badung%2C%20Bali!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Pearl Barber Shop Location">
+        </iframe>
+      </div>
+
+      <!-- FOOTER -->
+      <div style="border-top:1px solid #1a1a1a;padding-top:40px;text-align:center;">
+        <img src="logo.jpg" alt="Pearl Barber Shop" style="
+          height:88px;
+          mix-blend-mode:screen;
+          filter:sepia(0.2) saturate(2) brightness(0.95) drop-shadow(0 0 12px rgba(201,169,110,0.25));
+          display:block;
+          margin:0 auto 20px;
+          opacity:0.75;
+        ">
+        <p style="font-family:'Outfit',sans-serif;font-size:11px;color:#333;">
+          &copy; 2026 Pearl Barber Shop. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEO MODAL -->
+  <div id="videoModal" style="
+    display:none;
+    position:fixed;inset:0;z-index:9998;
+    background:rgba(0,0,0,0.92);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    align-items:center;justify-content:center;
+  " onclick="closeVideoModal(event)">
+
+    <div style="position:relative;width:min(480px,88vw);" onclick="event.stopPropagation()">
+
+      <!-- close -->
+      <button onclick="closeVideoModal()" style="
+        position:absolute;top:-48px;right:0;
+        background:none;border:none;color:#555;
+        font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:3px;
+        cursor:pointer;transition:color 0.3s;padding:4px 0;
+      " onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='#555'">
+        ✕ &nbsp;TUTUP
+      </button>
+
+      <!-- title -->
+      <p style="
+        font-family:'Cormorant Garamond',serif;font-size:11px;
+        letter-spacing:5px;color:#c9a96e;text-transform:uppercase;
+        margin-bottom:16px;text-align:center;opacity:0.8;
+      ">Buzz Cut</p>
+
+      <!-- video wrapper -->
+      <div style="position:relative;background:#000;border:1px solid #1e1e1e;overflow:hidden;" onclick="toggleVideo()">
+        <video id="modalVideo" src="gaya%20rambut/buzz%20cut.mp4"
+          playsinline loop
+          style="width:100%;display:block;">
+        </video>
+
+        <!-- custom play/pause overlay -->
+        <div id="videoOverlay" style="
+          position:absolute;inset:0;
+          display:flex;align-items:center;justify-content:center;
+          background:rgba(0,0,0,0.25);
+          opacity:1;transition:opacity 0.4s;
+          cursor:pointer;
+        ">
+          <div id="playBtn" style="
+            width:56px;height:56px;border-radius:50%;
+            border:1.5px solid rgba(201,169,110,0.7);
+            background:rgba(13,13,13,0.5);
+            display:flex;align-items:center;justify-content:center;
+            transition:all 0.3s;
+          ">
+            <svg id="iconPlay" width="16" height="18" viewBox="0 0 16 18" fill="#c9a96e"><polygon points="2,0 16,9 2,18"/></svg>
+            <svg id="iconPause" width="14" height="18" viewBox="0 0 14 18" fill="#c9a96e" style="display:none;">
+              <rect x="0" y="0" width="4" height="18" rx="1.5"/>
+              <rect x="10" y="0" width="4" height="18" rx="1.5"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- divider hint -->
+      <p style="
+        text-align:center;margin-top:14px;
+        font-family:'Outfit',sans-serif;font-size:10px;
+        letter-spacing:2px;color:#333;
+      ">KLIK UNTUK PAUSE / LANJUT</p>
+
+    </div>
+  </div>
+
+  <script>
+    // Video modal
+    const videoModal  = document.getElementById('videoModal');
+    const modalVideo  = document.getElementById('modalVideo');
+    const videoOverlay = document.getElementById('videoOverlay');
+    const iconPlay    = document.getElementById('iconPlay');
+    const iconPause   = document.getElementById('iconPause');
+
+    function syncIcon() {
+      if (modalVideo.paused) {
+        iconPlay.style.display  = 'block';
+        iconPause.style.display = 'none';
+        videoOverlay.style.opacity = '1';
+      } else {
+        iconPlay.style.display  = 'none';
+        iconPause.style.display = 'block';
+        // hide overlay while playing, show on hover
+        videoOverlay.style.opacity = '0';
+      }
+    }
+
+    // show overlay on hover when playing
+    const videoWrapper = modalVideo.parentElement;
+    videoWrapper.addEventListener('mouseenter', () => { videoOverlay.style.opacity = '1'; });
+    videoWrapper.addEventListener('mouseleave', () => { if (!modalVideo.paused) videoOverlay.style.opacity = '0'; });
+
+    modalVideo.addEventListener('play',  syncIcon);
+    modalVideo.addEventListener('pause', syncIcon);
+
+    function toggleVideo() {
+      modalVideo.paused ? modalVideo.play() : modalVideo.pause();
+    }
+
+    function openVideoModal() {
+      videoModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      modalVideo.play();
+    }
+
+    function closeVideoModal(e) {
+      if (e && e.currentTarget === videoModal && e.target !== videoModal) return;
+      videoModal.style.display = 'none';
+      document.body.style.overflow = '';
+      modalVideo.pause();
+      modalVideo.currentTime = 0;
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && videoModal.style.display === 'flex') {
+        closeVideoModal();
+      }
+    });
+
+    // Smooth scroll
+    function scrollTo(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+      // Close mobile menu
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('menuToggle').classList.remove('open');
+    }
+
+    // Mobile menu toggle
+    function toggleMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const toggle = document.getElementById('menuToggle');
+      const bar1 = document.getElementById('bar1');
+      const bar2 = document.getElementById('bar2');
+      const bar3 = document.getElementById('bar3');
+      const isOpen = menu.classList.toggle('open');
+      if (isOpen) {
+        bar1.style.transform = 'rotate(45deg) translate(4px, 4px)';
+        bar2.style.opacity = '0';
+        bar3.style.transform = 'rotate(-45deg) translate(4px, -4px)';
+      } else {
+        bar1.style.transform = 'none';
+        bar2.style.opacity = '1';
+        bar3.style.transform = 'none';
+      }
+    }
+
+    // Active nav on scroll
+    const sections = ['home', 'services', 'gallery', 'reviews', 'contact'];
+    window.addEventListener('scroll', () => {
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top < 300) {
+          document.querySelectorAll('.nav-link[data-section]').forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.nav-link[data-section="${id}"]`);
+          if (active) active.classList.add('active');
+        }
+      }
+    });
+
+    // ── HERO WIND CANVAS ANIMATION ──────────────────────────────────────
+    (function () {
+      const canvas = document.getElementById('heroCanvas');
+      const ctx = canvas.getContext('2d');
+
+      function resize() {
+        canvas.width  = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      // Particle factory
+      function makeParticle(startOffscreen) {
+        const isStreak = Math.random() > 0.45;
+        return {
+          x: startOffscreen ? -20 : Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size:    Math.random() * 1.4 + 0.3,
+          speedX:  Math.random() * 0.55 + 0.12,
+          speedY:  (Math.random() - 0.5) * 0.18,
+          opacity: Math.random() * 0.38 + 0.12,
+          waveAngle: Math.random() * Math.PI * 2,
+          waveSpeed: Math.random() * 0.007 + 0.002,
+          waveAmpX:  Math.random() * 0.35 + 0.05,
+          waveAmpY:  Math.random() * 0.22 + 0.05,
+          tail:    isStreak ? Math.random() * 22 + 8 : 0,
+          isStreak,
+          gold:    Math.random() > 0.15,   // gold vs soft-white (mostly gold)
+        };
+      }
+
+      const TOTAL = 110;
+      const particles = Array.from({ length: TOTAL }, () => makeParticle(false));
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (const p of particles) {
+          // update
+          p.waveAngle += p.waveSpeed;
+          p.x += p.speedX + Math.sin(p.waveAngle * 1.6) * p.waveAmpX;
+          p.y += p.speedY + Math.cos(p.waveAngle * 0.9) * p.waveAmpY;
+
+          // wrap / respawn
+          if (p.x > canvas.width + 30) {
+            Object.assign(p, makeParticle(true));
+            p.y = Math.random() * canvas.height;
+          }
+          if (p.y < -20)             p.y = canvas.height + 10;
+          if (p.y > canvas.height + 20) p.y = -10;
+
+          // draw
+          ctx.save();
+          ctx.globalAlpha = p.opacity;
+
+          if (p.isStreak) {
+            // thin wind line in direction of travel
+            const dx = p.speedX + Math.sin(p.waveAngle * 1.6) * p.waveAmpX;
+            const dy = p.speedY + Math.cos(p.waveAngle * 0.9) * p.waveAmpY;
+            const len = p.tail;
+            const nx = dx / (Math.sqrt(dx * dx + dy * dy) || 1);
+            const ny = dy / (Math.sqrt(dx * dx + dy * dy) || 1);
+
+            const grad = ctx.createLinearGradient(
+              p.x - nx * len, p.y - ny * len,
+              p.x, p.y
+            );
+            const col = p.gold ? '220,180,100' : '232,224,212';
+            grad.addColorStop(0, `rgba(${col},0)`);
+            grad.addColorStop(1, `rgba(${col},1)`);
+            ctx.strokeStyle = grad;
+            ctx.lineWidth = p.size * 0.6;
+            ctx.lineCap = 'round';
+            ctx.beginPath();
+            ctx.moveTo(p.x - nx * len, p.y - ny * len);
+            ctx.lineTo(p.x, p.y);
+            ctx.stroke();
+          } else {
+            // soft glowing dot
+            const col = p.gold ? '220,180,100' : '232,224,212';
+            const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 2.5);
+            grd.addColorStop(0, `rgba(${col},1)`);
+            grd.addColorStop(1, `rgba(${col},0)`);
+            ctx.fillStyle = grd;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size * 2.5, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          ctx.restore();
+        }
+
+        requestAnimationFrame(draw);
+      }
+
+      draw();
+    })();
+    // ────────────────────────────────────────────────────────────────────
+
+    // Fade-in on scroll via IntersectionObserver
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.fade-in-elem').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
