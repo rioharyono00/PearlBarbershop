@@ -316,17 +316,17 @@
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="navbar-inner">
-      <div class="logo" onclick="scrollTo('home')">
+      <div class="logo" onclick="scrollToSection('home')">
         <img src="logo.jpg" alt="Pearl Barber Shop"
           style="height:46px;mix-blend-mode:screen;filter:sepia(0.25) saturate(2.2) brightness(1.05);display:block;">
       </div>
 
       <div class="desktop-nav">
-        <span class="nav-link active" data-section="home" onclick="scrollTo('home')">Beranda</span>
-        <span class="nav-link" data-section="cabang" onclick="scrollTo('cabang')">Cabang</span>
-        <span class="nav-link" data-section="services" onclick="scrollTo('services')">Layanan</span>
-        <span class="nav-link" data-section="gallery" onclick="scrollTo('gallery')">Galeri</span>
-        <span class="nav-link" data-section="reviews" onclick="scrollTo('reviews')">Ulasan</span>
+        <span class="nav-link active" data-section="home" onclick="scrollToSection('home')">Beranda</span>
+        <span class="nav-link" data-section="cabang" onclick="scrollToSection('cabang')">Cabang</span>
+        <span class="nav-link" data-section="services" onclick="scrollToSection('services')">Layanan</span>
+        <span class="nav-link" data-section="gallery" onclick="scrollToSection('gallery')">Galeri</span>
+        <span class="nav-link" data-section="reviews" onclick="scrollToSection('reviews')">Ulasan</span>
         <button class="btn-primary" style="padding:10px 24px;font-size:11px;"
           onclick="window.open('https://wa.me/6281238012282','_blank')">
           Book Now
@@ -341,11 +341,11 @@
     </div>
 
     <div class="mobile-menu" id="mobileMenu">
-      <span class="nav-link" onclick="scrollTo('home')">Beranda</span>
-      <span class="nav-link" onclick="scrollTo('cabang')">Cabang</span>
-      <span class="nav-link" onclick="scrollTo('services')">Layanan</span>
-      <span class="nav-link" onclick="scrollTo('gallery')">Galeri</span>
-      <span class="nav-link" onclick="scrollTo('reviews')">Ulasan</span>
+      <span class="nav-link" onclick="scrollToSection('home')">Beranda</span>
+      <span class="nav-link" onclick="scrollToSection('cabang')">Cabang</span>
+      <span class="nav-link" onclick="scrollToSection('services')">Layanan</span>
+      <span class="nav-link" onclick="scrollToSection('gallery')">Galeri</span>
+      <span class="nav-link" onclick="scrollToSection('reviews')">Ulasan</span>
     </div>
   </nav>
 
@@ -404,7 +404,7 @@
         <button class="btn-primary" onclick="window.open('https://wa.me/6281238012282','_blank')">
           Book Appointment
         </button>
-        <button class="btn-outline" onclick="scrollTo('services')">
+        <button class="btn-outline" onclick="scrollToSection('services')">
           Lihat Layanan
         </button>
       </div>
@@ -948,11 +948,13 @@
     });
 
     // Smooth scroll
-    function scrollTo(id) {
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-      // Close mobile menu
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
       document.getElementById('mobileMenu').classList.remove('open');
-      document.getElementById('menuToggle').classList.remove('open');
+      document.getElementById('bar1').style.transform = 'none';
+      document.getElementById('bar2').style.opacity  = '1';
+      document.getElementById('bar3').style.transform = 'none';
     }
 
     // Mobile menu toggle
